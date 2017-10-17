@@ -49,3 +49,15 @@ irb(main):025:0> Track.find_by(name: "My Time After Awhile").genre
  name: "MPEG audio file",
  created_at: Fri, 24 Nov 2006 08:21:33 UTC +00:00,
  updated_at: Wed, 29 Jan 2014 22:14:22 UTC +00:00>
+
+
+7.  Use an association-provided method to find the album that track appears on.
+[2] pry(main)> Track.find_by(name: "My Time After Awhile").album
+  Track Load (1.7ms)  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2  [["name", "My Time After Awhile"], ["LIMIT", 1]]
+  Album Load (0.8ms)  SELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2  [["id", 20], ["LIMIT", 1]]
+=> #<Album:0x007f9cabd5deb0
+ id: 20,
+ artist_id: 15,
+ title: "The Best Of Buddy Guy - The Millenium Collection",
+ created_at: Mon, 20 Apr 2009 12:00:13 UTC +00:00,
+ updated_at: Wed, 29 Jan 2014 22:14:02 UTC +00:00>
