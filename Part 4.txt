@@ -37,3 +37,15 @@ irb(main):025:0> Track.find_by(name: "My Time After Awhile").genre
   Track Load (1.5ms)  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2  [["name", "My Time After Awhile"], ["LIMIT", 1]]
   Genre Load (0.5ms)  SELECT  "genres".* FROM "genres" WHERE "genres"."id" = $1 LIMIT $2  [["id", 6], ["LIMIT", 1]]
 => #<Genre id: 6, name: "Blues", created_at: "2011-03-13 07:33:57", updated_at: "2014-01-29 22:14:08">
+
+
+6.  Use an association-provided method to find the media type of that same track.
+
+[1] pry(main)> Track.find_by(name: "My Time After Awhile").media_type
+  Track Load (1.0ms)  SELECT  "tracks".* FROM "tracks" WHERE "tracks"."name" = $1 LIMIT $2  [["name", "My Time After Awhile"], ["LIMIT", 1]]
+  MediaType Load (0.6ms)  SELECT  "media_types".* FROM "media_types" WHERE "media_types"."id" = $1 LIMIT $2  [["id", 1], ["LIMIT", 1]]
+=> #<MediaType:0x007f9cabf6ad48
+ id: 1,
+ name: "MPEG audio file",
+ created_at: Fri, 24 Nov 2006 08:21:33 UTC +00:00,
+ updated_at: Wed, 29 Jan 2014 22:14:22 UTC +00:00>
