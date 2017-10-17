@@ -1,4 +1,4 @@
 class Loan < ApplicationRecord
-  has_and_belongs_to_many :books
-  has_and_belongs_to_many :patrons
+  belongs_to :books
+  belongs_to :patrons
 end
